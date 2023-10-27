@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Fit Feats</title>
+</head>
+
+<body class="red lighten-3">
+<nav class="red accent-4">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Fit Feats</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="active"><a href="/exercise">Pendentes</a></li>
+            <li><a href="#">Concluídos</a></li>
+            <li><a href="#">Perfil</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <main class="container">
+        <h3>Cadastrar Exercicio</h3>
+
+        <div class="card-panel">
+            <form th:action="${'/exercise'}" method="post" th:object="${exercise}">
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{titulo}" id="titulo" class="validate">
+                    <label for="titulo">Título</label>
+                    <span class="helper-text red-text" th:errors="*{titulo}"></span>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{tipo}" id="tipo" class="validate">
+                    <label for="tipo">Tipo</label>
+                    <span class="helper-text red-text" th:errors="*{tipo}"></span>
+                </div>
+                <div class="input-field col s12">
+                    <input th:field="*{descricao}" id="descricao" type="text" class="validate">
+                    <label for="descricao">Descrição</label>
+                    <span class="helper-text red-text" th:errors="*{descricao}"></span>
+                </div>
+                <label for="pontos">Pontos</label>
+                <p class="range-field">
+                    <input type="range" id="pontos" th:field="*{pontos}" min="1" max="100" />
+                    <span class="helper-text red-text" th:errors="*{pontos}"></span>
+                </p>
+                <div class="card-actions right-align">
+                    <a href="/exercise">cancelar</a>
+                    <button class="btn">salvar</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+
+
+
+</body>
+
+</html>
